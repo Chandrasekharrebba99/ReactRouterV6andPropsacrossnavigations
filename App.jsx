@@ -34,6 +34,15 @@ function Dashboard() {
   return <h1>{state?.courseId ? `Selected course: ${state.courseId}` : 'No course selected'}</h1>;
 }
 
+function NotFound() {
+  return (
+    <>
+      <h1>Page not found</h1>
+      <Link to="/learn">Browse courses</Link>
+    </>
+  );
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -43,6 +52,7 @@ export default function App() {
         <Route path="/learn-apps" element={<Navigate to="/learn" replace />} />
         <Route path="/learn/:courseId" element={<Course />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
